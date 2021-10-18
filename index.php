@@ -6,8 +6,8 @@ Stampare di nuovo il paragrafo e la sua lunghezza, dopo aver sostituito con tre 
 
 <?php
     $frase = "Luigi ha fatto una cazzata enorme durante l'esame di guida: ha guidato senza mettere la cintura! Ovviamente questa cazzata non è passata inosservata all'esaminatore che ha deciso giustamente di bocciarlo.";
-    $parolaccia = $_GET["parolaDaCensurare"];
-    $fraseCensurata = str_replace($parolaccia, "***", $frase); 
+    $parolaccia = strtolower($_GET["parolaDaCensurare"]);
+    $fraseCensurata = str_ireplace($parolaccia, "***", $frase);
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +22,11 @@ Stampare di nuovo il paragrafo e la sua lunghezza, dopo aver sostituito con tre 
     <h2>Frase senza censura</h2>
     <p><?php echo $frase; ?></p>
     <p>La lunghezza in caratteri della frase senza censura è: <?php echo strlen($frase); ?></p>
+    <form>
+        <label for="parolaDaCensurare">Inserisci parola da censurare:</label>
+        <input type="text" name="parolaDaCensurare" id="parolaDaCensurare">
+        <button type="submit">Censura</button>
+    </form>
     <h2>Frase censurata</h2>
     <p><?php echo $fraseCensurata; ?></p>
     <p>La lunghezza in caratteri della frase censurata è: <?php echo strlen($fraseCensurata); ?></p>
